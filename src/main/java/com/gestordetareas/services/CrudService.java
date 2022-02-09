@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.gestordetareas.model.Task;
@@ -48,5 +50,9 @@ public class CrudService {
 			result = "task with id is not modified";
 		}
 		return result;
+	}
+	
+	public Page<Task> findAll(Pageable pageable) {
+		return repo.findAll(pageable);
 	}
 }
